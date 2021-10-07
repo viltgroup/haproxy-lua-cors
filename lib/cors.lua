@@ -14,6 +14,8 @@ function contains(items, test_str)
   for _,item in pairs(items) do
     if item == test_str then
       return true
+    elseif item:match('^%.') and test_str:match('^.*' .. item:gsub('%.','%%.') .. '$') then
+      return true
     end
   end
 
